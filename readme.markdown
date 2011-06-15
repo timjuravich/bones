@@ -7,16 +7,16 @@ I've only played with this a bit, working only from localhost, it's possible tha
 ## Example
 Shrimp is a simple lib that you can add to a php file that will allow the following
 
-`<?php
-include 'lib/shrimp.php';
-
-get('/', function($app) {
-    $app->render('home');
-});
-
-get('/user/(.*?)', function($app) {
-    $app->set('username', $app->segment(2));
-    $app->render('user/show');
-});
-
-$shrimp->run();`
+	<?php
+	include 'lib/shrimp.php';
+	
+	get('/', function($app) {
+	    $app->render('home');
+	});
+	
+	get('/user/(.*?)', function($app) {
+	    $app->set('username', $app->segment(2));
+	    $app->render('user/show');
+	});
+	
+	$shrimp->run();
