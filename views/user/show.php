@@ -1,0 +1,1 @@
+User Show: <?php echo $username; ?>
