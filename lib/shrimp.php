@@ -13,7 +13,6 @@ function delete($route, $callback) { Shrimp::register($route, $callback, 'DELETE
 class Shrimp {
     public static $route_found = false;
     public $route = '';
-    public $segments = '';
     public $method = '';
     public $view = '';
     public $content = '';
@@ -129,10 +128,6 @@ class Shrimp {
 			echo "<span class='log'><b>$domain:</b> $string $secondary<br /></span>";
 		}
 	}
-
-    public function segment($num) {
-        return isset($this->segments[$num - 1]) ? $this->segments[$num - 1] : null;
-    }
 
     protected function get_method() {
         return isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
