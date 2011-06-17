@@ -31,18 +31,14 @@ class Shrimp {
         }
     }
 
-    // Sets variables to be used in this request
     public function set($index, $value) {
         $this->vars[$index] = $value;
     }
 
-    // Sets variables to be used in this request
     public function request($key) {
         return $this->route_variables[$key];
     }
 
-    // Renders the view and takes all variables set in
-    // $vars and renders them out
     public function render($view, $layout = "layout") {
         $this->view_content = ROOT. '/views/' . $view . '.php';
         foreach ($this->vars as $key => $value) {
@@ -102,7 +98,6 @@ class Shrimp {
                             $matched = false;
                         }
                     } else {
-                        //String doesn't have the same length
                         self::log("Routing","Routes are different lengths");
                         $matched = false;
                     }
