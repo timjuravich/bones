@@ -23,12 +23,6 @@ class Shrimp {
         $this->route = $this->get_route();
         $this->route_segments = explode('/', trim($this->route, '/'));
         $this->method = $this->get_method();
-
-        if (DEBUG) {
-            echo "<h2>Compare Against</h2>";
-            var_dump($this->route_segments);
-            echo "<br /><br />--------------------<br /><br />";
-        }
     }
 
     public function set($index, $value) {
@@ -63,14 +57,7 @@ class Shrimp {
         if (!static::$route_found) {
             
             $url_parts = explode('/', trim($route, '/'));
-            
-            if (DEBUG) {
-                echo "<br />";
-                self::log("Routing","Routing Start");
-                var_dump($url_parts);
-                echo "<br />";
-            }
-            
+                        
             $matched = null;
 
             if (count($shrimp->route_segments) == count($url_parts)) {
