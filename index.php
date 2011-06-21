@@ -19,5 +19,3 @@ get('/user/:username/posts', function($app) {
 get('/redirect', function($app) {
     $app->redirect('user/tim');
 });
-
-$shrimp->run();
