@@ -1,1 +1,0 @@
-Posts created by User: <?php echo $username; ?> 

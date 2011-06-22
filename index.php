@@ -5,17 +5,12 @@ get('/', function($app) {
     $app->render('home');
 });
 
-get('/user/:username', function($app) {
-    $app->set('username', $app->request("username"));
-    $app->render('user/show');
+get('/hello/:name', function($app) {
+	$app->set('name', $app->request("name"));
+    $app->render('hello');
 });
 
-get('/user/:username/posts', function($app) {
-    $app->set('username', $app->request("username"));
-    $app->render('user/posts');
-});
-
-
-get('/redirect', function($app) {
-    $app->redirect('user/tim');
+post('/hello', function($app) {
+	$app->set('name', $app->form('name'));
+    $app->render('hello');
 });

@@ -18,6 +18,7 @@ class Shrimp {
     public $content = '';
     public $vars = array();
     public $route_variables = array();
+	public $couch = '';
 
     public function __construct() {
         $this->route = $this->get_route();
@@ -32,6 +33,10 @@ class Shrimp {
     public function request($key) {
         return $this->route_variables[$key];
     }
+
+	public function form($key) {
+        return $_POST[$key];
+	}
 
     public function render($view, $layout = "layout") {
         $this->view_content = ROOT. '/views/' . $view . '.php';
@@ -53,30 +58,30 @@ class Shrimp {
 
     public static function register($route, $callback, $type) { 
         if (!static::$route_found) {
-            $shrimp = static::instance();    
+			$shrimp = static::instance();
             $url_parts = explode('/', trim($route, '/'));
             $matched = null;
 
-            if (count($shrimp->route_segments) == count($url_parts)) {
-                foreach ($url_parts as $key=>$part) {
-                    if (strpos($part, ":") !== false) {
-                        $shrimp->route_variables[substr($part, 1)] = $shrimp->route_segments[$key];
-                        self::log("Routing","Variable found at", $key);
-                        self::log("Routing","Variable " . substr($part, 1) . " set as " . $shrimp->route_segments[$key]);
-                    } else {
-                        if ($part == $shrimp->route_segments[$key]) {
-                            if (!$matched) {
-                                self::log("Routing","Routes match");
-                                $matched = true;
-                            }
-                        } else {
-                            self::log("Routing","Routes don't match");
-                            $matched = false;
-                        }
-                    }
-                }
-            } else {
-                self::log("Routing","Routes are different lengths");
+			if (count($shrimp->route_segments) == count($url_parts)) {
+            	foreach ($url_parts as $key=>$part) {
+	                if (strpos($part, ":") !== false) {
+	                    $shrimp->route_variables[substr($part, 1)] = $shrimp->route_segments[$key];
+	                    self::log("Routing","Variable found at", $key);
+	                    self::log("Routing","Variable " . substr($part, 1) . " set as " . $shrimp->route_segments[$key]);
+	                } else {
+	                    if ($part == $shrimp->route_segments[$key]) {
+	                        if (!$matched) {
+	                            self::log("Routing","Routes match");
+	                            $matched = true;
+	                        }
+	                    } else {
+	                        self::log("Routing","Routes don't match");
+	                        $matched = false;
+	                    }
+	                }
+            	}
+			} else {
+            	self::log("Routing","Routes are different lengths");
                 $matched = false;
             }
         
