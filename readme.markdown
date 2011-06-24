@@ -14,19 +14,12 @@ Shrimp is a simple lib that you can add to a php file that will allow the follow
 	    $app->render('home');
 	});
 
-	get('/user/:username', function($app) {
-	    $app->set('username', $app->request("username"));
-	    $app->render('user/show');
+	get('/hello/:name', function($app) {
+		$app->set('name', $app->request("name"));
+	    $app->render('hello');
 	});
 
-	get('/user/:username/posts', function($app) {
-	    $app->set('username', $app->request("username"));
-	    $app->render('user/posts');
+	post('/hello', function($app) {
+		$app->set('name', $app->form('name'));
+	    $app->render('hello');
 	});
-
-
-	get('/redirect', function($app) {
-	    $app->redirect('user/tim');
-	});
-
-	$shrimp->run();
