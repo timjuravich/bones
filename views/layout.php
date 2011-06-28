@@ -5,6 +5,6 @@
 			<li><a href="<?php echo $this->make_route() ?>">Home</a></li>            
 			<li><a href="<?php echo $this->make_route('hello/tim') ?>">Say Hi To Tim</a></li>
         </ul>
-        <?php include($this->view_content); ?>
+        <?php include($this->content); ?>
     </body>
 </html>

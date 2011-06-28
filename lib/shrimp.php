@@ -40,7 +40,7 @@ class Shrimp {
     }
 
     public function render($view, $layout = "layout") {
-        $this->view_content = ROOT. '/views/' . $view . '.php';
+        $this->content = ROOT. '/views/' . $view . '.php';
         foreach ($this->vars as $key => $value) {
             $$key = $value;
         }
