@@ -6,11 +6,11 @@ get('/', function($app) {
 });
 
 get('/hello/:name', function($app) {
-	$app->set('name', $app->request("name"));
+    $app->set('name', $app->request("name"));
     $app->render('hello');
 });
 
 post('/hello', function($app) {
-	$app->set('name', $app->form('name'));
+    $app->set('name', $app->form('name'));
     $app->render('hello');
 });
