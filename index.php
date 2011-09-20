@@ -1,5 +1,5 @@
 <?php
-include 'lib/shrimp.php';
+include 'lib/bones.php';
 
 get('/', function($app) {
     $app->render('home');
