@@ -1,3 +1,6 @@
+## Background
+Bones is based on a concept written by Dan Horrigan called Sammy. Bones was then adapted to create a simple PHP and CouchDB application to be covered in the upcoming book published by Packt Publishing
+
 ## Bones
 Bones is a quick attempt at a PHP sinatra-ish environment.
 
